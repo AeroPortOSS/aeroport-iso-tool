@@ -1,16 +1,16 @@
 # aeroport-iso-tool
 
-This repository houses the automated system deployment scripts and imaging tools responsible for generating the streamlined, headless Windows 11 ARM64 installation media required by the AeroPort hypervisor.
+This repository houses the automated system deployment scripts and imaging tools responsible for generating the streamlined, headless Windows 11 ARM64 installation media required by the AeroPort hypervisor framework.
 
 ---
 
 ## Functional Overview
 
 The deployment logic relies on native PowerShell configurations and Deployment Image Servicing and Management (DISM) automation engines to construct an unattended installation matrix:
-* **UUP Manifest Interrogation:** Pulls and compiles clean deployment packages straight from official update systems.
-* **Image Optimization:** Mounts the installation target, permanently strips telemetry modules, diagnostic tracking services, and default enterprise package bloatware to achieve minimal memory consumption.
-* **Driver Injection:** Packages and injects the compiled `aeroport.sys` kernel module and driver registers directly into the offline image structure.
-* **Kernel Verification Adjustment:** Edits the offline Boot Configuration Data (BCD) records to toggle testing signatures on (`bcdedit /set testsigning on`), enabling seamless driver initialization out of the box.
+* **UUP Manifest Interrogation:** Pulls and compiles clean deployment packages straight from official update channels.
+* **Image Optimization:** Mounts the installation target, permanently strips telemetry modules, diagnostic tracking services, and default enterprise package bloatware to minimize background memory and CPU consumption.
+* **Subsystem Pre-Injection:** Packages and registers the compiled user-mode Indirect Display Driver (`aeroport-idd-driver`) and guest binaries directly into the offline image layout.
+* **Boot Configuration Modification:** Adjusts the offline Boot Configuration Data (BCD) records to toggle testing signatures on (`bcdedit /set testsigning on`), enabling seamless initialization of custom user-mode components out of the box.
 
 ---
 
